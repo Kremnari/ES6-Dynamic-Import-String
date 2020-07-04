@@ -1,0 +1,39 @@
+<html>
+<head>
+</head>
+<body>
+<p>Install Module Strings to service worker:
+	<button id="install" onclick="install(event)">Install</button>
+	<button id="clear" onclick="install(event, true)">Uninstall</button>
+</p>
+<p>Load A Module: <button onclick="modClick()">Load</button> (either "hello" or "goodbye")</p>
+<p>**An oddity, you may have to refresh the page after installing the service worker.<br />
+	which happened without prompt</p>
+<p>Click on <em>Load</em> and type either <em>hello</em> or <em>goodbye</em></p>
+<p>Goodbye, will load from the external file</p>
+<p>Typing <em>Hello</em> will depend on whether you have clicked <em>Install</em> yet.</p>
+<ul>
+<li>Before <em>Install</em>, it will load the external file</li>
+<li>After <em>Install</em>, it will load from the mods string in base.js</li>
+</ul>
+<div style="margin-top: 20px; ">
+	<p id="message" style="font-size: 32px;"></p>
+</div>
+</body>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('./sw.js').then(function(registration) {
+      // Registration was successful
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }, function(err) {
+      // registration failed :(
+      console.log('ServiceWorker registration failed: ', err);
+    });
+  });
+} else {
+ console.log("cannot register a service worker")
+ }
+</script>
+<script src="base.js" type="module"></script>
+</html>
