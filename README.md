@@ -8,3 +8,5 @@ There are some reports, that Chrome will not accept DataURIs in the import funct
 Additionally, this method should remove the need to DataURI encode the code in other browsers (not tested though)
 
 Built and Tested in Chrome@83
+
+[index](https://kremnari.github.io/ES6-Dynamic-Import-String/src/index.html)
